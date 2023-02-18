@@ -19,6 +19,9 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	/* Mockito */
+	testImplementation "org.mockito:mockito-core:3.+"
 }
 
 tasks.named('test') {
