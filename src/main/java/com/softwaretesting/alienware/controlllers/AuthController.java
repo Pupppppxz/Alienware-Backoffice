@@ -6,7 +6,7 @@ public class AuthController {
     private AuthService authservice;
 
     public String login(String user,String pass){
-        if(user==authservice.getUser() &&pass==authservice.getPassword()){
+        if(authservice.compare(user,pass)){
             return "success";
         }
         else{
