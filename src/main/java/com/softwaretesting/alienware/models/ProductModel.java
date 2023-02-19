@@ -27,8 +27,8 @@ public class ProductModel {
     private ZonedDateTime UpdatedAt;
 //    @Column(name = "CreatedAt")
     private UUID CategoryId;
-    @OneToOne(mappedBy = "CategoryName")
-    private String CategoryName;
+//    @OneToOne(mappedBy = "CategoryName")
+//    private String CategoryName;
 
     public UUID getProductId() {
         return ProductId;
