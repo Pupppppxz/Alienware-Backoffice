@@ -1,5 +1,6 @@
 package com.softwaretesting.alienware.controlllers;
 import com.softwaretesting.alienware.models.LoginRequest;
+import com.softwaretesting.alienware.models.ResToken;
 import com.softwaretesting.alienware.services.Tokenservice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
 
 @RestController
 public class AuthController {
@@ -21,8 +24,10 @@ public class AuthController {
     }
 
     @PostMapping("/token")
-    public String token(@RequestBody LoginRequest userlogin){
+    public ResToken token(@RequestBody LoginRequest userlogin){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userlogin.username(),userlogin.password()));
-        return tokenservice.generateToken(authentication);
+//        return tokenservice.generateToken(authentication);
+        String token = tokenservice.generateToken(authentication);
+        return new ResToken(token,new Date());
     }
 }
