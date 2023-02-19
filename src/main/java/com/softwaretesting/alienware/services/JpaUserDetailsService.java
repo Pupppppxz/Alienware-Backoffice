@@ -2,7 +2,7 @@
 //
 //
 //import com.softwaretesting.alienware.models.SecurityUser;
-//import com.softwaretesting.alienware.repositories.AdminRepository;
+//import com.softwaretesting.alienware.repositories.admin.AdminRepository;
 //import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 //import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.context.annotation.ComponentScan;

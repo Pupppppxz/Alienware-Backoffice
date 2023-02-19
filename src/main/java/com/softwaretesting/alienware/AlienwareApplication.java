@@ -1,15 +1,10 @@
 package com.softwaretesting.alienware;
 
 
-import jakarta.persistence.spi.PersistenceProvider;
 import com.softwaretesting.alienware.configs.RsaKeyProperties;
-import com.softwaretesting.alienware.models.Admin;
-import com.softwaretesting.alienware.repositories.AdminRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 
 @EnableConfigurationProperties(RsaKeyProperties.class)
 @SpringBootApplication
