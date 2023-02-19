@@ -1,4 +1,4 @@
-package com.softwaretesting.alienware.controlllers;
+package com.softwaretesting.alienware.controllers;
 
 import com.softwaretesting.alienware.models.LoginRequest;
 import com.softwaretesting.alienware.models.ResToken;
@@ -35,7 +35,6 @@ class AuthControllerTest {
         //When
         when(tokenservice.generateToken(any())).thenReturn("token");
         ResToken actual = authController.token(body);
-        System.out.println(actual);
         //then
         assertEquals("token",actual.token());
     }
@@ -48,7 +47,6 @@ class AuthControllerTest {
         //When
         when(tokenservice.generateToken(any())).thenReturn(null);
         ResToken actual = authController.token(body);
-        System.out.println(actual);
         //then
         assertEquals(null,actual.token());
     }
