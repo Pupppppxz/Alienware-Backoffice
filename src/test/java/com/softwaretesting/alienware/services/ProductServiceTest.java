@@ -83,4 +83,49 @@ class ProductServiceTest {
 
         Assertions.assertNull(savedProduct);
     }
+
+    @Test
+    void should_return_true_when_call_validate_product_given_valid_object() {
+        CreateProductDTO dto = new CreateProductDTO(
+                "product1",
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                99.78F,
+                90,
+                categoryId
+        );
+
+        boolean validated = productService.validateProductObject(dto);
+
+        Assertions.assertTrue(validated);
+    }
+
+    @Test
+    void should_return_false_when_call_validate_product_given_invalid_price() {
+        CreateProductDTO dto = new CreateProductDTO(
+                "product1",
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                -99.78F,
+                90,
+                categoryId
+        );
+
+        boolean validated = productService.validateProductObject(dto);
+
+        Assertions.assertFalse(validated);
+    }
+
+    @Test
+    void should_return_false_when_call_validate_product_given_invalid_quantity() {
+        CreateProductDTO dto = new CreateProductDTO(
+                "product1",
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                99.78F,
+                -5,
+                categoryId
+        );
+
+        boolean validated = productService.validateProductObject(dto);
+
+        Assertions.assertFalse(validated);
+    }
 }
