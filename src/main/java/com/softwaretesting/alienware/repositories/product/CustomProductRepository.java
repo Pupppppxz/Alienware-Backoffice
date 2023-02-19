@@ -1,5 +1,6 @@
 package com.softwaretesting.alienware.repositories.product;
 
+import com.softwaretesting.alienware.dto.CreateProductDTO;
 import com.softwaretesting.alienware.models.ProductModel;
 
 import java.util.List;
@@ -10,6 +11,6 @@ public interface CustomProductRepository {
     Boolean checkProductExistById(UUID id);
     Boolean checkProductExist(ProductModel product);
     Boolean deleteProduct(UUID id);
-    ProductModel createProduct(ProductModel product);
+    ProductModel createProduct(CreateProductDTO product);
     List<ProductModel> getAll();
 }

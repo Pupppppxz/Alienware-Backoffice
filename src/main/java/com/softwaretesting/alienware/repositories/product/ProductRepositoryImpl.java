@@ -1,5 +1,6 @@
 package com.softwaretesting.alienware.repositories.product;
 
+import com.softwaretesting.alienware.dto.CreateProductDTO;
 import com.softwaretesting.alienware.models.ProductModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -57,6 +58,8 @@ public class ProductRepositoryImpl implements CustomProductRepository {
                         "\tSET \"DeletedAt\"=now()\n" +
                         "\tWHERE \"ProductId\" = ?;"
             );
+            query.setParameter(1, id);
+            if (query.executeUpdate() == 0) return false;
             return true;
         } catch (Exception e) {
             System.out.println(e);
@@ -65,7 +68,7 @@ public class ProductRepositoryImpl implements CustomProductRepository {
     }
 
     @Override
-    public ProductModel createProduct(ProductModel product) {
+    public ProductModel createProduct(CreateProductDTO product) {
         try {
             Query query = entityManager.createNativeQuery(
                     "INSERT INTO public.\"Products\"(\n" +
@@ -78,10 +81,19 @@ public class ProductRepositoryImpl implements CustomProductRepository {
             query.setParameter(2, product.getDetail());
             query.setParameter(3, product.getPrice());
             query.setParameter(4, product.getQuantity());
-            query.setParameter(5, product.getActive());
-            query.setParameter(6, product.getCategoryId());
-            product.setProductId((UUID) query.getResultList().get(0));
-            return product;
+            query.setParameter(5, false);
+            query.setParameter(6, product.getCategoryId().toString());
+            System.out.println(query.getResultList().get(0));
+            ProductModel productSaved = new ProductModel(
+                    (UUID) query.getResultList().get(0),
+                    product.getName(),
+                    product.getDetail(),
+                    product.getPrice(),
+                    product.getQuantity(),
+                    product.getCategoryId(),
+                    false
+            );
+            return productSaved;
         } catch (Exception e) {
             System.out.println(e);
             return null;

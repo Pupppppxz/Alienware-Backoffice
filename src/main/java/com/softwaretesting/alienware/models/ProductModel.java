@@ -5,30 +5,36 @@ import jakarta.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-@Entity
 public class ProductModel {
 
-    @Id
-//    @Column(name = "ProductId")
     private UUID ProductId;
-//    @Column(name = "Name")
     private String Name;
-//    @Column(name = "Detail")
     private String Detail;
-//    @Column(name = "Price")
     private Float Price;
-//    @Column(name = "Quantity")
     private Integer Quantity;
-//    @Column(name = "IsActive")
     private Boolean IsActive;
-//    @Column(name = "CreatedAt")
     private ZonedDateTime CreatedAt;
-//    @Column(name = "UpdatedAt")
     private ZonedDateTime UpdatedAt;
-//    @Column(name = "CreatedAt")
     private UUID CategoryId;
-    @OneToOne(mappedBy = "CategoryName")
     private String CategoryName;
+
+    public ProductModel(UUID productId, String name, String detail, Float price, Integer quantity, UUID categoryId, boolean isActive) {
+        ProductId = productId;
+        Name = name;
+        Detail = detail;
+        Price = price;
+        Quantity = quantity;
+        CategoryId = categoryId;
+        IsActive = isActive;
+    }
+
+    public ProductModel(String name, String detail, Float price, Integer quantity, UUID categoryId) {
+        Name = name;
+        Detail = detail;
+        Price = price;
+        Quantity = quantity;
+        CategoryId = categoryId;
+    }
 
     public UUID getProductId() {
         return ProductId;
