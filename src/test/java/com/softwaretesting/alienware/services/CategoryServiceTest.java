@@ -1,4 +1,4 @@
-package com.softwaretesting.alienware.category;
+package com.softwaretesting.alienware.services;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
