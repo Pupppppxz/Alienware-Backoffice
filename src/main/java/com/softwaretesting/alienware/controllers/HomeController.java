@@ -1,4 +1,4 @@
-package com.softwaretesting.alienware.controlllers;
+package com.softwaretesting.alienware.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

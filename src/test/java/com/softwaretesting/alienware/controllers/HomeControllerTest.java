@@ -1,4 +1,4 @@
-package com.softwaretesting.alienware.controlllers;
+package com.softwaretesting.alienware.controllers;
 
 import com.softwaretesting.alienware.configs.SecurityConfig;
 import com.softwaretesting.alienware.services.Tokenservice;
