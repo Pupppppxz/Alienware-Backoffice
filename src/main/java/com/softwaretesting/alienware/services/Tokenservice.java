@@ -13,14 +13,14 @@ import java.util.stream.Collectors;
 
 @Service
 public class Tokenservice {
-    private  final JwtEncoder encoder;
+    private final JwtEncoder encoder;
 
     public Tokenservice(JwtEncoder encoder) {
         this.encoder = encoder;
     }
 
 
-    public String generateToken(Authentication authentication){
+    public String generateToken(Authentication authentication) {
         Instant now = Instant.now();
         String scope = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)

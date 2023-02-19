@@ -21,7 +21,7 @@ class HomeControllerTest {
     MockMvc mvc;
 
     @Test
-    void  return_isUnauthorized_when_req_whit_out_user_password() throws  Exception{
+    void  res_Unauthorized_when_req_whit_out_user_password() throws  Exception{
         this.mvc.perform(get("/"))
                 .andExpect(status().isUnauthorized());
     }

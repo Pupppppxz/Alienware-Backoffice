@@ -70,7 +70,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth->auth
                         .requestMatchers("/token").permitAll()
                         .anyRequest().authenticated()
-
                 )
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
