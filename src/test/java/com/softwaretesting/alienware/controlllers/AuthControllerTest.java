@@ -27,18 +27,30 @@ class AuthControllerTest {
     @Mock
     private Tokenservice tokenservice;
 
-        @Test
+    @Test
     void should_return_token_when_call_generateToken_given_valid_user_and_password(){
         //Given
         LoginRequest body = new LoginRequest("Admin","Admin12345");
-        when(tokenservice.generateToken(any())).thenReturn("token");
 
         //When
+        when(tokenservice.generateToken(any())).thenReturn("token");
         ResToken actual = authController.token(body);
-            System.out.println(actual);
+        System.out.println(actual);
         //then
-            assertNotNull(actual);
-//        assertEquals("token", actual);
+        assertEquals("token",actual.token());
+    }
+
+    @Test
+    void should_return_token_when_call_generateToken_given_invalid_user_and_password(){
+        //Given
+        LoginRequest body = new LoginRequest("Admin1231232","Admin1232131245");
+
+        //When
+        when(tokenservice.generateToken(any())).thenReturn(null);
+        ResToken actual = authController.token(body);
+        System.out.println(actual);
+        //then
+        assertEquals(null,actual.token());
     }
 
 //    @Test
